@@ -1,30 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 /* reset css */
-body, h1, h2, p, ul, li, header, main, p, div {
-    margin: 0;
-    padding: 0;
-    border: 0;
+*,
+*::after,
+*::before {
     box-sizing: border-box;
-    list-style: none;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-button {
-    appearance: none;
 }
 
 /* design */
 body {
-    position: relative;
-    background-color:#EAE8FE;
+    background: #EAE8FE;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-header {
-    text-align: center;
+#app {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.heading1, .h2_1 {
+h1[class^=hidden],
+h2[class^=hidden],
+label[class^=hidden] {
     position: absolute;
     clip: rect(0 0 0 0);
     width: 1px;
@@ -34,186 +31,278 @@ header {
 }
 
 .logo {
-    width: 386px;
-    height: 164px;
+    position: absolute;
+    width: 100%;
+    max-width: 386px;
+}
+
+.img_logo {
+    max-width: 100%;
 }
 
 .wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    gap: 28px;
-    margin-top: 67px;
-    margin-bottom: 171px;
+    gap: 0 20px;
+    padding-top: 248px;
 }
 
-.vending-machine {
-    background-color: white;
+.wrapper .vending_machine {
+    display: block;
     width: 360px;
-    height: 545px;
-    position: relative;
+    background-color: #FFFFFF;
+    padding: 31px 27px 28px;
 }
 
-ul.drinks {
-    position: absolute;
-    top: 31px;
-    left: 27px;
-    width: 306px;
-    height: 272px;
+.vending_machine .drinks {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
 }
 
-ul.drinks > li {
-    border: 3px solid #ddd;
+.drinks li {    
+    width: 94px;    
     border-radius: 10px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 50%);
+}
+
+.drinks .btn_item {
+    padding: 11px 11px 9px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.drinks .btn_item:active {
+    border-radius: 10px;
+    outline: 3px solid #6327FE;
+}
+
+/* button의 상위인 li에 before로 주면 나타나는 순서가  li before < li after < button */
+.drinks .sold_out::before {
+    content: "";    
+    position: absolute;
     width: 94px;
     height: 130px;
-    position: relative;    
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    vertical-align: middle;
+    background: no-repeat center/ 60px 46px url('./mediaquery/Sold-out.png') rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 10;
 }
 
-.drink-name {
+.drinks .sold_out::after {
+    content: '품절';
+    overflow: hidden;
     position: absolute;
-    top: 82px;
+    text-indent: -9999px;
+    line-height: 0;
+    font-size: 1px;
+    color: transparent;
+}
+
+.drinks .sold_out {
+    pointer-events: none;
+}
+
+.btn_item .img_item {
+    width: 36px;
+    margin: 0 auto;
+}
+
+.drinks .drink_name {
+    display: block;
+    font-weight: 500;
     font-size: 9px;
     line-height: 13px;
+    margin-bottom: 7px;
 }
 
-.drink-price {
-    position: absolute;
+.drinks .drink_price {
+    display: inline-block;
     width: 70px;
-    height: 22px;
-    top: 99px;
-    margin-bottom: 9px;
+    padding: 5px 12px;
+    font-weight: 500;
     font-size: 12px;
+    line-height: 100%;
     background: #6327FE;
     color: white;
     border-radius: 50px;
 }
 
-.btn1 {
-    position: absolute;
-    top: 323px;
-    left: 27px;
+.vending_machine .buttons {
+    margin-top: 20px;
+}
+
+.buttons .btn1 {
+    display: inline-block;
     width: 200px;
-    height: 32px;
-    bottom: 190px;
+    padding: 6px 10px;
     background: #EAE8FE;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.btn1_text {
-    display: inline-block;
+    font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    margin-left: 10px;
+    margin: 0 12px 11px 0;
 }
 
-.btn2 {
-    position: absolute;
+.buttons .btn1.input_money {
+    border: 1px solid #BDBDBD;
+    background-color: #FFFFFF;
+}
+
+.buttons .won {
+    float: right;
+}
+
+.buttons .btn2 {
+    float: right;
     width: 94px;
-    height: 33px;
-    left: 239px;
-    bottom: 190px;
+    padding: 7px 9px;
     background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: 1px solid #BDBDBD;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 50%);
+    border: 0;
     border-radius: 5px;
-
-}
-
-.btn3 {
-    position: absolute;
-    width: 200px;
-    height: 32px;
-    left: 27px;
-    bottom: 146px;
-    /* Gray 4 */
-
-    border: 1px solid #BDBDBD;
-    box-sizing: border-box;
-    border-radius: 5px;
-}
-
-.btn4 { 
-    position: absolute;
-    width: 94px;
-    height: 32px;
-    left: 239px;
-    bottom: 146px;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: 1px solid #BDBDBD;
-    border-radius: 5px;
+    font-weight: 500;
+    line-height: 19px;
+    font-size: 13px;
+    cursor: pointer;
 }
 
 .scroll {
-    position: absolute;
+    display: inline-block;
     width: 200px;
     height: 106px;
-    left: 27px;
-    bottom: 28px;
+    padding: 12px 10px 12px 12px;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #EAE8FE;
+    overflow-y: scroll;
+}
 
-    /* Gray 4 */
+.scroll::-webkit-scrollbar {
+    width: 12px;
+}
 
+.scroll::-webkit-scrollbar-thumb {
+    height: 79px;
+    border-radius: 50px;
+    background-color: #FFFFFF;
+    background-clip: padding-box;
+    border: 4px solid transparent;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+.selected_drinks>li,
+.drink_list>li {
+    width: 100%;
+    padding: 8px;
+    background-color: #FFFFFF;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 9px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.selected_cola {
+    width: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.selected_qty {
+    float: right;
+    width: 30px;
+    text-align: center;
+    padding: 5px 11px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
     border: 1px solid #BDBDBD;
     box-sizing: border-box;
     border-radius: 5px;
 }
 
-.btn5 {
-    position: absolute;
-width: 94px;
-height: 106px;
-left: 239px;
-bottom: 28px;
-background: #6327FE;
-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-border-radius: 5px;
-border-radius: 5px;
-font-weight: 700;
-font-size: 13px;
-line-height: 19px;
-color: #FFFFFF;
-
+.buttons .btn3 {
+    float: right;
+    width: 94px;
+    padding: 43px 35px 44px;
+    background-color: #6327FE;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    border: 0;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
-.my-info {
+.my_info {
     width: 360px;
-    height: 545px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
 }
 
-.my-money {
-    background-color: white;
-    width: 360px;
-    height: 50px;
-
+.my_money {
+    width: 100%;
+    padding: 9px 27px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
 }
 
-.my-money-1 {
-    background-color: white;
-
+.my_money .tit_my_money {
+    width: 306px;
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    background: #EAE8FE;
+    border-radius: 5px;
 }
 
-.my-drink {
-    display: flex;
-    justify-content: center;
-    width: 360px;
-    height: 474px;
-    background-color: white;
+.my_money .price_my_money {
+    float: right;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin: -27px 10px 0 0;
 }
 
-.drink-list {
+
+.my_info .my_drink {
+    width: 100%;
+    padding: 25px 27px 48px;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.my_drink .drink_list {
     background-color: #EAE8FE;
+}
+
+.my_drink .scroll.drink_list {
+    width: 306px;
+    height: 364px;
+    margin-top: 13px;
+}
+
+.my_drink .scroll.drink_list>li {
+    width: 100%;
+}
+
+.my_drink .total_amount {
+    float: right;
+    margin: 6px -12px 0 0;
+    width: 109px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
 }
