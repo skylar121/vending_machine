@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 /* reset css */
@@ -21,7 +23,8 @@ body {
 
 h1[class^=hidden],
 h2[class^=hidden],
-label[class^=hidden] {
+label[class^=hidden],
+span[class^=hidden] {
     position: absolute;
     clip: rect(0 0 0 0);
     width: 1px;
@@ -30,17 +33,16 @@ label[class^=hidden] {
     overflow: hidden;
 }
 
-.logo {
+header.logo {
     position: absolute;
-    width: 100%;
     max-width: 386px;
 }
 
-.img_logo {
+.logo .img_logo {
     max-width: 100%;
 }
 
-.wrapper {
+main.wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -49,10 +51,10 @@ label[class^=hidden] {
 }
 
 .wrapper .vending_machine {
-    display: block;
     width: 360px;
     background-color: #FFFFFF;
-    padding: 31px 27px 28px;
+    padding: 31px 27px 26px;
+    margin-bottom: 20px;
 }
 
 .vending_machine .drinks {
@@ -61,10 +63,11 @@ label[class^=hidden] {
     gap: 12px;
 }
 
-.drinks li {    
-    width: 94px;    
+.vending_machine .drinks li {    
+    width: 94px;
     border-radius: 10px;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 50%);
+    position: relative;
 }
 
 .drinks .btn_item {
@@ -85,20 +88,10 @@ label[class^=hidden] {
     content: "";    
     position: absolute;
     width: 94px;
-    height: 130px;
+    height: 100%;
     background: no-repeat center/ 60px 46px url('./mediaquery/Sold-out.png') rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     z-index: 10;
-}
-
-.drinks .sold_out::after {
-    content: '품절';
-    overflow: hidden;
-    position: absolute;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 1px;
-    color: transparent;
 }
 
 .drinks .sold_out {
@@ -173,9 +166,8 @@ label[class^=hidden] {
     display: inline-block;
     width: 200px;
     height: 106px;
-    padding: 12px 10px 12px 12px;
+    padding: 12px 4px 12px 12px;
     border: 1px solid #BDBDBD;
-    box-sizing: border-box;
     border-radius: 5px;
     background-color: #EAE8FE;
     overflow-y: scroll;
@@ -199,9 +191,9 @@ label[class^=hidden] {
 }
 
 .selected_drinks>li,
-.drink_list>li {
-    width: 100%;
-    padding: 8px;
+.drink_list>li {    
+    width: auto;
+    padding: 6px 8px 7px 10px;
     background-color: #FFFFFF;
     margin-bottom: 6px;
     font-weight: 500;
@@ -210,10 +202,17 @@ label[class^=hidden] {
     text-align: left;
 }
 
-.selected_cola {
+
+
+img.img_selected_cola {
     width: 18px;
     margin-right: 10px;
     vertical-align: middle;
+}
+
+.selected_cola {
+    display: inline-block;
+    width: 73px;
 }
 
 .selected_qty {
@@ -225,8 +224,8 @@ label[class^=hidden] {
     font-size: 14px;
     line-height: 20px;
     border: 1px solid #BDBDBD;
-    box-sizing: border-box;
     border-radius: 5px;
+    margin-left: 6px;
 }
 
 .buttons .btn3 {
@@ -292,10 +291,6 @@ label[class^=hidden] {
     width: 306px;
     height: 364px;
     margin-top: 13px;
-}
-
-.my_drink .scroll.drink_list>li {
-    width: 100%;
 }
 
 .my_drink .total_amount {
