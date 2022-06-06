@@ -1,0 +1,301 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+/* reset css */
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+/* design */
+body {
+    background: #EAE8FE;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h1[class^=hidden],
+h2[class^=hidden],
+label[class^=hidden],
+span[class^=hidden] {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+header.logo {
+    position: absolute;
+    max-width: 386px;
+}
+
+.logo .img_logo {
+    max-width: 100%;
+}
+
+main.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 20px;
+    padding-top: 248px;
+}
+
+.wrapper .vending_machine {
+    width: 360px;
+    background-color: #FFFFFF;
+    padding: 31px 27px 26px;
+    margin-bottom: 20px;
+}
+
+.vending_machine .drinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.vending_machine .drinks li {    
+    width: 94px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 50%);
+    position: relative;
+}
+
+.drinks .btn_item {
+    padding: 11px 11px 9px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.drinks .btn_item:active {
+    border-radius: 10px;
+    outline: 3px solid #6327FE;
+}
+
+/* button의 상위인 li에 before로 주면 나타나는 순서가  li before < li after < button */
+.drinks .sold_out::before {
+    content: "";    
+    position: absolute;
+    width: 94px;
+    height: 100%;
+    background: no-repeat center/ 60px 46px url('./mediaquery/Sold-out.png') rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.drinks .sold_out {
+    pointer-events: none;
+}
+
+.btn_item .img_item {
+    width: 36px;
+    margin: 0 auto;
+}
+
+.drinks .drink_name {
+    display: block;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 13px;
+    margin-bottom: 7px;
+}
+
+.drinks .drink_price {
+    display: inline-block;
+    width: 70px;
+    padding: 5px 12px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    background: #6327FE;
+    color: white;
+    border-radius: 50px;
+}
+
+.vending_machine .buttons {
+    margin-top: 20px;
+}
+
+.buttons .btn1 {
+    display: inline-block;
+    width: 200px;
+    padding: 6px 10px;
+    background: #EAE8FE;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 12px 11px 0;
+}
+
+.buttons .btn1.input_money {
+    border: 1px solid #BDBDBD;
+    background-color: #FFFFFF;
+}
+
+.buttons .won {
+    float: right;
+}
+
+.buttons .btn2 {
+    float: right;
+    width: 94px;
+    padding: 7px 9px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 50%);
+    border: 0;
+    border-radius: 5px;
+    font-weight: 500;
+    line-height: 19px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.scroll {
+    display: inline-block;
+    width: 200px;
+    height: 106px;
+    padding: 12px 4px 12px 12px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    background-color: #EAE8FE;
+    overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    height: 79px;
+    border-radius: 50px;
+    background-color: #FFFFFF;
+    background-clip: padding-box;
+    border: 4px solid transparent;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+.selected_drinks>li,
+.purchased_drinks>li {    
+    width: auto;
+    padding: 6px 8px 7px 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 9px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+img.img_selected_cola {
+    width: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.selected_cola {
+    display: inline-block;
+    width: 73px;
+}
+
+.selected_qty {
+    float: right;
+    width: 30px;
+    text-align: center;
+    padding: 5px 11px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    margin-left: 6px;
+}
+
+.buttons .btn3 {
+    float: right;
+    width: 94px;
+    padding: 43px 35px 44px;
+    background-color: #6327FE;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    border: 0;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.my_info {
+    width: 360px;
+}
+
+.my_money {
+    width: 100%;
+    padding: 9px 27px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+}
+
+.my_money .tit_my_money {
+    width: 306px;
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    background: #EAE8FE;
+    border-radius: 5px;
+}
+
+.my_money .price_my_money {
+    float: right;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin: -27px 10px 0 0;
+}
+
+
+.my_info .my_drink {
+    width: 100%;
+    padding: 25px 27px 48px;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.my_drink .purchased_drinks {
+    background-color: #EAE8FE;
+}
+
+.my_drink .scroll.purchased_drinks {
+    width: 306px;
+    height: 364px;
+    margin-top: 13px;
+}
+
+.my_drink .total_amount {
+    float: right;
+    margin: 6px -12px 0 0;
+    width: 109px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+}
